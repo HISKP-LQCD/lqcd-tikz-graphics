@@ -108,6 +108,8 @@ Author: Martin Ueding
 
 Author: Martin Ueding
 
+References: [10.1103/PhysRevD.86.094513](http://dx.doi.org/10.1103/PhysRevD.86.094513)
+
 ![](parallelpiped.png)
 
 [parallelpiped.tex](parallelpiped.tex)
