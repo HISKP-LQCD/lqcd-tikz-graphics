@@ -1,0 +1,32 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+% Adapted from http://dx.doi.org/10.1007/978-3-642-38750-0_4
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.4]
+
+    \fill[fill=black!20] (0, 0) rectangle +(4, 1);
+    \fill[fill=black!10] (0, 1) rectangle +(4, 1);
+
+    \draw[thick, xstep=4, ystep=6] (0, 0) grid (12, 12);
+    \draw[thick] (0, 0) rectangle (12, 12);
+
+    \draw[thin, xstep=4, ystep=2] (0, 0) grid (12, 12);
+    \draw[dotted] (0, 0) grid (12, 12);
+
+    \draw[|-|] (0, -0.5) -- (4, -0.5) node[below, midway] {\texttt{soalen}};
+    \draw[|-|] (-0.5, 0) -- (-0.5, 2) node[left, midway] {\texttt{ngy}};
+    \draw[|-|] (-0.5, 6) -- (-0.5, 12) node[left, midway] {\texttt{By}};
+    \draw[|-|] (12.5, 0) -- (12.5, 12) node[right, midway] {\texttt{Ly}};
+    \draw[|-|] (0, 12.5) -- (12, 12.5) node[above, midway] {\texttt{Lxh}};
+
+\end{tikzpicture}
+    
+\end{document}

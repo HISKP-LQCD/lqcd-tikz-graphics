@@ -1,0 +1,116 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+\begin{document}
+
+\newcommand\cubicIrrepCircleDiam{0.15}
+
+\begin{tikzpicture}[
+        scale=3,
+        rotate around y=15,
+    ]
+
+    \coordinate (ex) at (1, 0, 0);
+    \coordinate (ey) at (0, 1, 0);
+    \coordinate (ez) at (0, 0, 1);
+
+    \foreach \a in {0,1}
+    \foreach \b in {0,1}
+    {
+        \draw ($\a*(ex) + \b*(ey)$) -- ++(ez);
+        \draw ($\a*(ey) + \b*(ez)$) -- ++(ex);
+        \draw ($\a*(ez) + \b*(ex)$) -- ++(ey);
+    }
+
+    \coordinate (myshift) at (0.5, 1.4, 0.5);
+
+    \draw[fill] (0.5, 0.5, 0.5) circle (0.05);
+
+    \draw[fill] (0.5, 0, 0.5) circle (0.03);
+    \draw[fill] (0.5, 1, 0.5) circle (0.03);
+
+
+    \begin{scope}[shift=(myshift)]
+        \begin{scope}[rotate around x=-90]
+            \draw[->, >=Latex] (\cubicIrrepCircleDiam, 0, 0) arc (30:330:\cubicIrrepCircleDiam);
+        \end{scope}
+        \draw[->, >=Latex] (0, -1.8, 0) -- (0, 0.3, 0);
+    \end{scope}
+\end{tikzpicture}
+
+\begin{tikzpicture}[
+        scale=3,
+        rotate around y=15,
+    ]
+
+    \coordinate (ex) at (1, 0, 0);
+    \coordinate (ey) at (0, 1, 0);
+    \coordinate (ez) at (0, 0, 1);
+
+    \foreach \a in {0,1}
+    \foreach \b in {0,1}
+    {
+        \draw ($\a*(ex) + \b*(ey)$) -- ++(ez);
+        \draw ($\a*(ey) + \b*(ez)$) -- ++(ex);
+        \draw ($\a*(ez) + \b*(ex)$) -- ++(ey);
+    }
+
+    \coordinate (myshift) at (1.2, 1.2, 0.5);
+
+    \draw[fill] (0.5, 0.5, 0.5) circle (0.05);
+
+    \draw[fill] (0, 0, 0.5) circle (0.03);
+    \draw[fill] (1, 1, 0.5) circle (0.03);
+
+    \begin{scope}[rotate around z=-45, shift=(myshift)]
+        \begin{scope}[rotate around x=-90]
+            \draw[->, >=Latex] (\cubicIrrepCircleDiam5, 0, 0) arc (30:330:\cubicIrrepCircleDiam5);
+        \end{scope}
+        \draw[->, >=Latex] (0, -2.2, 0) -- (0, 0.3, 0);
+    \end{scope}
+
+\end{tikzpicture}
+
+\begin{tikzpicture}[
+        scale=3,
+        rotate around y=15,
+    ]
+
+    \coordinate (ex) at (1, 0, 0);
+    \coordinate (ey) at (0, 1, 0);
+    \coordinate (ez) at (0, 0, 1);
+
+    \foreach \a in {0,1}
+    \foreach \b in {0,1}
+    {
+        \draw ($\a*(ex) + \b*(ey)$) -- ++(ez);
+        \draw ($\a*(ey) + \b*(ez)$) -- ++(ex);
+        \draw ($\a*(ez) + \b*(ex)$) -- ++(ey);
+    }
+
+    \coordinate (myshift) at (1.2, 1.2, -0.2);
+
+    \draw[fill] (0.5, 0.5, 0.5) circle (0.05);
+
+    \draw[fill] (0, 0, 1) circle (0.03);
+    \draw[fill] (1, 1, 0) circle (0.03);
+
+    \begin{scope}[shift=(myshift)]
+        \begin{scope}[rotate around z=135, rotate around x=-145]
+        \begin{scope}[rotate around x=90]
+            \draw[->, >=Latex] (\cubicIrrepCircleDiam5, 0, 0) arc (30:330:\cubicIrrepCircleDiam5);
+        \end{scope}
+        \draw[->, >=Latex] (0, -2.4, 0) -- (0, 0.3, 0);
+        \end{scope}
+    \end{scope}
+
+\end{tikzpicture}
+
+\end{document}

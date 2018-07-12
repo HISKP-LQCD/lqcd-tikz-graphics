@@ -1,0 +1,52 @@
+% Copyright © 2016-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\newcommand\xMax{2}
+\newcommand\yMax{2}
+\newcommand\zMax{2}
+
+\begin{tikzpicture}[
+        scale=1.0,
+        x={(0:10mm)},
+        y={(90:10mm)},
+        z={(31:7mm)},
+    ]
+    \foreach \x in {0,...,\xMax}
+    \foreach \y in {0,...,\yMax}
+    \foreach \z in {0,...,\zMax}
+    {
+        \fill (\x, \y, \z) circle (2pt);
+        \draw[very thin] (\x, \y, \z) -- ++(110:3mm);
+    }
+
+    \foreach \x in {1,...,\xMax}
+    \foreach \y in {0,...,\yMax}
+    \foreach \z in {0,...,\zMax}
+    \draw (\x, \y, \z) -- ++(-1, 0, 0);
+
+    \foreach \x in {0,...,\xMax}
+    \foreach \y in {1,...,\yMax}
+    \foreach \z in {0,...,\zMax}
+    \draw (\x, \y, \z) -- ++(0, -1, 0);
+
+    \foreach \x in {0,...,\xMax}
+    \foreach \y in {0,...,\yMax}
+    \foreach \z in {1,...,\zMax}
+    \draw (\x, \y, \z) -- ++(0, 0, -1);
+\end{tikzpicture}
+
+\end{document}

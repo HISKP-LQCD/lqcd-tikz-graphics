@@ -1,0 +1,66 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+\colorlet{mygray1}{black!10}
+\colorlet{mygray2}{black!20}
+
+\begin{document}
+
+\begin{tikzpicture}[
+        box/.style={
+            draw,
+            rectangle,
+            minimum size=5mm,
+        },
+        block/.style={
+            draw,
+            circle,
+            minimum size=0mm,
+            inner sep=1.5pt,
+        },
+        marked/.style={
+            fill=mygray1,
+        },
+        scale=0.5,
+    ]
+
+    \node[box, marked] (l0) at (0, -0) {0};
+    \node[box] (l1) at (0, -1) {1};
+    \node[box] (l2) at (0, -2) {2};
+    \node[box] (l3) at (0, -3) {3};
+    \node[box] (l4) at (0, -4) {4};
+    \node[box] (l5) at (0, -5) {5};
+    \node[box] (l6) at (0, -6) {6};
+    \node[box] (l7) at (0, -7) {7};
+
+    \begin{scope}[xshift=30mm, yshift=0mm]
+        \node[block, marked] (b0) at (0, -0) {0};
+        \node[block] (b1) at (0, -1) {1};
+        \node[block] (b2) at (0, -2) {2};
+        \node[block] (b3) at (0, -3) {3};
+        \node[block] (b4) at (0, -4) {4};
+        \node[block] (b5) at (0, -5) {5};
+        \node[block] (b6) at (0, -6) {6};
+        \node[block] (b7) at (0, -7) {7};
+    \end{scope}
+
+    \begin{scope}[->, >=Latex, out=0, in=180]
+        \draw (l0) to (b0);
+        \draw (l1) to (b1);
+        \draw (l2) to (b2);
+        \draw (l3) to (b3);
+        \draw (l4) to (b4);
+        \draw (l5) to (b5);
+        \draw (l6) to (b6);
+        \draw (l7) to (b7);
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,65 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\tikzset{
+    gauge link/.style={
+        %thick,
+    },
+    link arrow/.style={
+        decoration={
+            markings,
+            mark=at position 0.0 with {\arrow{Straight Barb}},
+        },
+        postaction={decorate},
+    },
+    link arrow midway/.style={
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Straight Barb}},
+        },
+        postaction={decorate},
+    },
+    gauge link arrow/.style={
+        gauge link,
+        link arrow midway,
+    },
+    lattice point/.style={
+        draw,
+        fill,
+        circle,
+        minimum size=1.7mm,
+        inner sep=0,
+    },
+}
+
+\begin{tikzpicture}
+    \node[lattice point] (n) at (0, 0) {};
+    \node[below left=0.5mm of n] {$\vec n$};
+    \node[lattice point] (n-mu) at (30mm, 0) {};
+    \node[below right=0.5mm of n-mu] {$\vec n + \mu$};
+
+    \draw[gauge link] (n) -- ++(-4mm, 0);
+    \draw[gauge link] (n) -- ++(0, 4mm);
+    \draw[gauge link] (n) -- ++(0, -4mm);
+
+    \draw[gauge link] (n-mu) -- ++(4mm, 0);
+    \draw[gauge link] (n-mu) -- ++(0, 4mm);
+    \draw[gauge link] (n-mu) -- ++(0, -4mm);
+
+    \draw[gauge link arrow, thick] (n-mu) -- (n) node[below, midway] {$U_\mu(\vec n)^\dagger$};
+\end{tikzpicture}
+
+\end{document}

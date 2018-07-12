@@ -1,0 +1,19 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7]
+    \draw[->] (1, 1) node[above] {\footnotesize $n + \mu$} -- (1, 0);
+    \draw[->] (1, 0) -- (0, 0) node[below] {\footnotesize $x - \nu$};
+    \draw[->] (0, 0) -- (0, 1) node[above] {\footnotesize $x$};
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,98 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+
+\begin{document}
+
+\newcommand\OLambda{0.1931833275037836}
+\newcommand\OMLambda{0.806817}
+
+\begin{tikzpicture}[
+        scale=0.7,
+        dot/.style={
+            draw,
+            circle,
+            inner sep=3pt,
+        },
+        dotout/.style={
+            draw=black!30,
+            circle,
+            inner sep=3pt,
+        },
+    ]
+    \coordinate (a) at (0, 0);
+    \coordinate (b) at (10, 0);
+    \coordinate (c) at (20, 0);
+    \coordinate (d) at (30, 0);
+
+    \coordinate (offset) at (0, -0.7);
+
+    \draw[dashed] (b) node[above] {$\tau$} -- ++(0, -2.5);
+    \draw[dashed] (c) node[above] {$\tau + \delta\tau$} -- ++(0, -2.5);
+
+    \node[] (l1-1) at ($(a)!\OLambda!(b)+(offset)$) {};
+    \node[dotout] (l1-2) at ($(a)!\OMLambda!(b)+(offset)$) {};
+    \node[dot] (l1-3) at ($(b)!\OLambda!(c)+(offset)$) {};
+    \node[dot] (l1-4) at ($(b)!\OMLambda!(c)+(offset)$) {};
+    \node[dotout] (l1-5) at ($(c)!\OLambda!(d)+(offset)$) {};
+    \node[] (l1-6) at ($(c)!\OMLambda!(d)+(offset)$) {};
+
+    \draw[thin, ->, >=Latex] (l1-2) -- (l1-3);
+    \draw[thin, ->, >=Latex] (l1-3) -- (l1-4);
+    \draw[thin, ->, >=Latex] (l1-4) -- (l1-5);
+
+    \node[] (l2-1) at ($(l1-1)!\OLambda!(l1-2)+(offset)$) {};
+    \node[] (l2-2) at ($(l1-1)!\OMLambda!(l1-2)+(offset)$) {};
+    \node[dotout] (l2-3) at ($(l1-2)!\OLambda!(l1-3)+(offset)$) {};
+    \node[dot] (l2-4) at ($(l1-2)!\OMLambda!(l1-3)+(offset)$) {};
+    \node[dot] (l2-5) at ($(l1-3)!\OLambda!(l1-4)+(offset)$) {};
+    \node[dot] (l2-6) at ($(l1-3)!\OMLambda!(l1-4)+(offset)$) {};
+    \node[dot] (l2-7) at ($(l1-4)!\OLambda!(l1-5)+(offset)$) {};
+    \node[dotout] (l2-8) at ($(l1-4)!\OMLambda!(l1-5)+(offset)$) {};
+    \node[] (l2-9) at ($(l1-5)!\OLambda!(l1-6)+(offset)$) {};
+    \node[] (l2-10) at ($(l1-5)!\OMLambda!(l1-6)+(offset)$) {};
+
+    \draw[thin, ->, >=Latex] (l2-3) -- (l2-4);
+    \draw[thin, ->, >=Latex] (l2-4) -- (l2-5);
+    \draw[thin, ->, >=Latex] (l2-5) -- (l2-6);
+    \draw[thin, ->, >=Latex] (l2-6) -- (l2-7);
+    \draw[thin, ->, >=Latex] (l2-7) -- (l2-8);
+
+    \node[] (l3-1) at ($(l2-1)!\OLambda!(l2-2)+(offset)$) {};
+    \node[] (l3-2) at ($(l2-1)!\OMLambda!(l2-2)+(offset)$) {};
+    \node[] (l3-3) at ($(l2-2)!\OLambda!(l2-3)+(offset)$) {};
+    \node[] (l3-4) at ($(l2-2)!\OMLambda!(l2-3)+(offset)$) {};
+    \node[dotout] (l3-5) at ($(l2-3)!\OLambda!(l2-4)+(offset)$) {};
+    \node[dot] (l3-6) at ($(l2-3)!\OMLambda!(l2-4)+(offset)$) {};
+    \node[dot] (l3-7) at ($(l2-4)!\OLambda!(l2-5)+(offset)$) {};
+    \node[dot] (l3-8) at ($(l2-4)!\OMLambda!(l2-5)+(offset)$) {};
+    \node[dot] (l3-9) at ($(l2-5)!\OLambda!(l2-6)+(offset)$) {};
+    \node[dot] (l3-10) at ($(l2-5)!\OMLambda!(l2-6)+(offset)$) {};
+    \node[dot] (l3-11) at ($(l2-6)!\OLambda!(l2-7)+(offset)$) {};
+    \node[dot] (l3-12) at ($(l2-6)!\OMLambda!(l2-7)+(offset)$) {};
+    \node[dot] (l3-13) at ($(l2-7)!\OLambda!(l2-8)+(offset)$) {};
+    \node[dotout] (l3-14) at ($(l2-7)!\OMLambda!(l2-8)+(offset)$) {};
+    \node[] (l3-15) at ($(l2-8)!\OLambda!(l2-9)+(offset)$) {};
+    \node[] (l3-16) at ($(l2-8)!\OMLambda!(l2-9)+(offset)$) {};
+    \node[] (l3-17) at ($(l2-9)!\OLambda!(l2-10)+(offset)$) {};
+    \node[] (l3-18) at ($(l2-9)!\OMLambda!(l2-10)+(offset)$) {};
+
+    \draw[thin, ->, >=Latex] (l3-5) -- (l3-6);
+    \draw[thin, ->, >=Latex] (l3-6) -- (l3-7);
+    \draw[thin, ->, >=Latex] (l3-7) -- (l3-8);
+    \draw[thin, ->, >=Latex] (l3-8) -- (l3-9);
+    \draw[thin, ->, >=Latex] (l3-9) -- (l3-10);
+    \draw[thin, ->, >=Latex] (l3-10) -- (l3-11);
+    \draw[thin, ->, >=Latex] (l3-11) -- (l3-12);
+    \draw[thin, ->, >=Latex] (l3-12) -- (l3-13);
+    \draw[thin, ->, >=Latex] (l3-13) -- (l3-14);
+
+\end{tikzpicture}
+
+\end{document}

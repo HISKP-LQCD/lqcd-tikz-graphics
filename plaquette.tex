@@ -1,0 +1,106 @@
+% Copyright © 2017-2018 Martin Ueding <dev@martin-ueding.de>
+% Licensed under CC-BY 4.0
+
+\documentclass{scrartcl}
+
+\pagestyle{empty}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.markings}
+
+\colorlet{mygray1}{black!10}
+\colorlet{mygray2}{black!20}
+
+\begin{document}
+
+
+\tikzset{
+    gauge link/.style={
+        %thick,
+    },
+    link arrow/.style={
+        decoration={
+            markings,
+            mark=at position 0.1 with {\arrow{Straight Barb}},
+        },
+        postaction={decorate},
+    },
+    link arrow midway/.style={
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{Straight Barb}},
+        },
+        postaction={decorate},
+    },
+    gauge link arrow/.style={
+        gauge link,
+        link arrow midway,
+    },
+    lattice point/.style={
+        draw,
+        fill,
+        circle,
+        minimum size=1.7mm,
+        inner sep=0,
+    },
+}
+
+
+\begin{tikzpicture}
+    \node[lattice point] (n) at (0, 0) {};
+    \node[lattice point] (n-mu) at (30mm, 0) {};
+    \node[lattice point] (n-nu) at (0, 30mm) {};
+    \node[lattice point] (n-mu-nu) at (30mm, 30mm) {};
+
+    \node[below left=0.5mm of n] {$\vec n$};
+    \node[below right=0.5mm of n-mu] {$\vec n + \mu$};
+    \node[above left=0.5mm of n-nu] {$\vec n + \nu$};
+    \node[above right=0.5mm of n-mu-nu] {$\vec n + \mu + \nu$};
+
+    \draw[gauge link] (n) -- ++(-4mm, 0);
+    \draw[gauge link] (n) -- ++(0, 4mm);
+    \draw[gauge link] (n) -- ++(0, -4mm);
+
+    \draw[gauge link] (n-mu) -- ++(4mm, 0);
+    \draw[gauge link] (n-mu) -- ++(0, 4mm);
+    \draw[gauge link] (n-mu) -- ++(0, -4mm);
+
+    \draw[gauge link] (n-nu) -- ++(-4mm, 0);
+    \draw[gauge link] (n-nu) -- ++(0, 4mm);
+
+    \draw[gauge link] (n-mu-nu) -- ++(4mm, 0);
+    \draw[gauge link] (n-mu-nu) -- ++(0, 4mm);
+
+    \draw[gauge link arrow] (n) -- (n-mu) node[below, midway] {$ U_\mu(n)$};
+    \draw[gauge link arrow] (n) -- (n-nu) node[left, midway] {$ U_\nu(n)$};
+    \draw[gauge link arrow] (n-mu) -- (n-mu-nu) node[right, midway] {$ U_\nu(n +
+    \mu)$};
+    \draw[gauge link arrow] (n-nu) -- (n-mu-nu) node[above, midway] {$ U_\mu(n +
+    \nu)$};
+
+    \newcommand\cloverlink{
+        \draw[link arrow, thick] (1.5, 0.3) .. controls (2.7, 0.3) and (2.7, 0.3) ..
+        (2.7, 1.5);
+    }
+
+    \cloverlink
+
+    \begin{scope}[transform canvas={rotate around={90:(1.5, 1.5)}}]
+        \cloverlink
+    \end{scope}
+    \begin{scope}[transform canvas={rotate around={180:(1.5, 1.5)}}]
+        \cloverlink
+    \end{scope}
+    \begin{scope}[transform canvas={rotate around={270:(1.5, 1.5)}}]
+        \cloverlink
+    \end{scope}
+
+    \node at (1.5, 1.5) {$ P_{\mu\nu}(\vec n)$};
+\end{tikzpicture}
+
+\end{document}
