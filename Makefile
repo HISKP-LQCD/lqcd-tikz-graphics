@@ -12,4 +12,4 @@ all: $(pdf) $(crop) $(png)
 	pdfcrop $^
 
 %.png: %-crop.pdf
-	pdftocairo -png -r 300 -singlefile $^ $$(basename $@ .png)
+	pdftocairo -png -r 200 -singlefile $^ $$(basename $@ .png)
