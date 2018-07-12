@@ -1,15 +1,13 @@
 tex := $(wildcard *.tex)
 pdf := $(tex:.tex=.pdf)
-crop := $(tex:.tex=-crop.pdf)
 png := $(tex:.tex=.png)
 
-all: $(pdf) $(crop) $(png)
+all: $(pdf) $(png)
 
 %.pdf: %.tex
 	lualatex --halt-on-error $^
+	mv $@ temp-$@
+	pdfcrop temp-$@ $@
 
-%-crop.pdf: %.pdf
-	pdfcrop $^
-
-%.png: %-crop.pdf
+%.png: %.pdf
 	pdftocairo -png -r 200 -singlefile $^ $$(basename $@ .png)
