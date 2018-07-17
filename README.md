@@ -14,6 +14,11 @@ The files here must be minimal LaTeX files that compile (perhaps we use
 Travis CI at some point). Also the files contain the name of the author and
 another reference to the license.
 
+On inclusion of several graphics in one pdf document it is recommended to
+separate all calls to \usetikzlibrary and style definitions into a single file
+that then is included into the documents preamble (\RequirePackeage{}, \input{},
+etc.). Otherwise compilation may fail.
+
 # Images
 
 ## Four dimensional lattice
