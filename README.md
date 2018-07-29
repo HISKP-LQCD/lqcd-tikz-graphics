@@ -153,3 +153,11 @@ Author: Martin Ueding
 ![](time-scales-test.png)
 
 [time-scales-test.tex](time-scales-test.tex)
+
+## Diagrams With Time Dilution
+
+Author: Martin Ueding
+
+![](diagrams.png)
+
+[diagrams.tex](diagrams.tex)

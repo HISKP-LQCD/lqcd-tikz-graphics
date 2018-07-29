@@ -1,0 +1,110 @@
+\documentclass[12pt, parskip=full]{scrartcl}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.markings}
+
+\tikzset{
+    quarkline/.style={
+        decoration={
+            markings,
+            mark=at position 0.7 with {\arrow{Latex}},
+        },
+        postaction={
+            decorate,
+        },
+    },
+    meson/.style={
+        fill,
+        circle,
+        inner sep=0.5mm,
+    },
+}
+
+\newcommand\helper[4]{
+    \node[meson] (A) at (#1) {};
+    \node[meson] (B) at (#2) {};
+    \node[meson] (C) at (#3) {};
+    \node[meson] (D) at (#4) {};
+
+    \draw[dashed] (0, -1) node[below] {\small $t_\mathrm{so}$} -- (0, 5);
+    \draw[dashed] (1, -1) node[below] {\small $t_\mathrm{so}+1$} -- (1, 5);
+    \draw[dashed] (5, -1) node[below] {\small $t_\mathrm{si}$} -- (5, 5);
+    \draw[dashed] (6, -1) node[below] {\small $t_\mathrm{si}+1$} -- (6, 5);
+}
+
+\newcommand\jitter[1]{
+    \begin{tikzpicture}
+        #1{0, 4}{5, 4}{0, 0}{5, 0}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        #1{0, 4}{6, 4}{0, 0}{6, 0}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        #1{1, 4}{5, 4}{1, 0}{5, 0}
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        #1{1, 4}{6, 4}{1, 0}{6, 0}
+    \end{tikzpicture}
+}
+
+\newcommand\diagrammCross[4]{
+    \helper{#1}{#2}{#3}{#4}
+    \draw[quarkline] (A) -- (B);
+    \draw[quarkline] (B) -- (C);
+    \draw[quarkline] (C) -- (D);
+    \draw[quarkline] (D) -- (A);
+}
+
+\newcommand\diagrammBox[4]{
+    \helper{#1}{#2}{#3}{#4}
+    \draw[quarkline] (A) -- (B);
+    \draw[quarkline] (B) -- (D);
+    \draw[quarkline] (D) -- (C);
+    \draw[quarkline] (C) -- (A);
+}
+
+\newcommand\diagrammDirect[4]{
+    \helper{#1}{#2}{#3}{#4}
+    \draw[quarkline, out=20,  in=160] (A) to (B);
+    \draw[quarkline, out=-160, in=-20] (B) to (A);
+    \draw[quarkline, out=20,  in=160] (C) to (D);
+    \draw[quarkline, out=-160, in=-20] (D) to (C);
+}
+
+\newcommand\diagrammVaccum[4]{
+    \helper{#1}{#2}{#3}{#4}
+    \draw[quarkline, out=290,  in=70] (A) to (C);
+    \draw[quarkline, out=110, in=250] (C) to (A);
+    \draw[quarkline, out=290,  in=70] (B) to (D);
+    \draw[quarkline, out=110, in=250] (D) to (B);
+}
+
+
+
+
+
+\begin{document}
+
+\section{Cross}
+
+\jitter\diagrammCross
+
+\section{Box}
+
+\jitter\diagrammBox
+
+\section{Direct}
+
+\jitter\diagrammDirect
+
+\section{Vacuum}
+
+\jitter\diagrammVaccum
+
+    
+\end{document}
